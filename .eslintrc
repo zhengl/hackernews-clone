@@ -1,10 +1,13 @@
 {
     "extends": "airbnb",
+    "parser": "babel-eslint",
     "env": {
-        "browser": true
+        "browser": true,
+        "jest": true
     },
     "rules": {
         "import/no-extraneous-dependencies": [error, { devDependencies: true }],
+        "react/forbid-prop-types": [error, { "forbid": ["any"] }],
         "react/jsx-filename-extension": 0
     }
 }

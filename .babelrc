@@ -1,5 +1,6 @@
 {
-  "presets": [["env", {"modules": false}], "react"],
+  "presets": [["env", {"modules": false, "exclude": ["transform-regenerator", "transform-async-to-generator"]}], "react"],
+  "plugins": ["transform-decorators-legacy"],
   "env": {
     "test": {
         "presets": ["env", "react"],
