@@ -10,6 +10,7 @@ class Link extends Component {
 
   static defaultProps = {
     to: '',
+    children: null,
   }
 
   static propTypes = {

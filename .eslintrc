@@ -5,9 +5,13 @@
         "browser": true,
         "jest": true
     },
+    "globals": {
+        "__DEV__": true
+    },
     "rules": {
         "import/no-extraneous-dependencies": [error, { devDependencies: true }],
         "react/forbid-prop-types": [error, { "forbid": ["any"] }],
-        "react/jsx-filename-extension": 0
+        "react/jsx-filename-extension": 0,
+        "global-require": 0
     }
 }

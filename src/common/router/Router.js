@@ -9,9 +9,9 @@ import {
 
 let createHistory;
 if (process.env.BUILD_TARGET === 'client') {
-  createHistory = require('history').createBrowserHistory; // eslint-disable-line global-require
+  createHistory = require('history').createBrowserHistory;
 } else {
-  createHistory = require('history').createMemoryHistory; // eslint-disable-line global-require
+  createHistory = require('history').createMemoryHistory;
 }
 
 const history = createHistory();

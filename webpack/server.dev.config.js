@@ -24,7 +24,9 @@ module.exports = Object.assign({}, baseConfig, {
     new StartServerPlugin(baseConfig.output.filename),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
+      __DEV__: JSON.stringify(true),
       'process.env': {
+        LOG_LEVEL: JSON.stringify(process.env.LOG_LEVEL),
         BUILD_TARGET: JSON.stringify('server'),
         SCRIPT_BASE_PATH: JSON.stringify('http://localhost:3001/'),
       },

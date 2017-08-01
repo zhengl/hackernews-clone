@@ -10,7 +10,13 @@ module.exports = Object.assign({}, baseConfig, {
     baseConfig.entry,
   ],
   plugins: [
-    ...baseConfig.plugins,
+    new webpack.DefinePlugin({
+      __DEV__: JSON.stringify(true),
+      'process.env': {
+        LOG_LEVEL: JSON.stringify(process.env.LOG_LEVEL),
+        BUILD_TARGET: JSON.stringify('client'),
+      },
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

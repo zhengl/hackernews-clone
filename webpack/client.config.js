@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      __DEV__: JSON.stringify(false),
       'process.env': {
         BUILD_TARGET: JSON.stringify('client'),
       },
