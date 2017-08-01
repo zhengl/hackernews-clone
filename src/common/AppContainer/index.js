@@ -1,11 +1,11 @@
 import React from 'react';
 import { object } from 'prop-types';
 import { Provider } from 'react-redux';
-import App from '../App';
+import { Router } from '../router';
 
 const AppContainer = ({ store }) => (
   <Provider store={store}>
-    <App />
+    <Router />
   </Provider>
 );
 

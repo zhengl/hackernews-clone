@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const { resolve } = require('path');
 
 module.exports = {
@@ -17,4 +18,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        BUILD_TARGET: JSON.stringify('client'),
+      },
+    }),
+  ],
 };

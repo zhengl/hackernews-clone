@@ -1,13 +1,15 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { number, string } from 'prop-types';
+import { Link } from '../../common/router';
 
-const Story = ({ title }) => (
+const Story = ({ id, title }) => (
   <li>
-    <p>{title}</p>
+    <Link to={`/items/${id}`}>{title}</Link>
   </li>
 );
 
 Story.propTypes = {
+  id: number.isRequired,
   title: string.isRequired,
 };
 

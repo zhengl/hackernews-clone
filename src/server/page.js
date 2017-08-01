@@ -1,36 +1,21 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { trigger } from 'redial';
 import { ServerStyleSheet } from 'styled-components';
-import { StaticRouter } from 'react-router';
-import { matchPath } from 'react-router-dom';
 import AppContainer from '../common/AppContainer';
 import createStore from '../common/store';
-import routes from '../common/routes';
+import fetchData from '../common/fetchData';
 
 const basePath = process.env.SCRIPT_BASE_PATH;
-const store = createStore();
-const sheet = new ServerStyleSheet();
 
-function matchComponent(url) {
-  const [{ component }] = routes.filter(route => matchPath(url, route));
-  return component;
-}
-
-async function fetchData(url) {
-  const locals = {
-    dispatch: store.dispatch,
-  };
-  await trigger('fetch', matchComponent(url), locals);
-}
-
-function renderApplication(url) {
-  const context = {};
-  return renderToString(sheet.collectStyles(
-    <StaticRouter location={url} context={context}>
-      <AppContainer store={store} />
-    </StaticRouter>,
+function renderApplication(store) {
+  const sheet = new ServerStyleSheet();
+  const application = renderToString(sheet.collectStyles(
+    <AppContainer store={store} />,
   ));
+  return {
+    application,
+    styles: sheet.getStyleTags(),
+  };
 }
 
 function renderHtml(styles, application, initialState) {
@@ -55,9 +40,12 @@ function renderHtml(styles, application, initialState) {
 }
 
 export default async (ctx) => {
-  await fetchData(ctx.url);
-  const application = renderApplication(ctx.url);
-  const html = renderHtml(sheet.getStyleTags(), application, store.getState());
+  const store = createStore({
+    url: ctx.url,
+  });
+  await fetchData(ctx.url, store.dispatch);
+  const { application, styles } = renderApplication(store);
+  const html = renderHtml(styles, application, store.getState());
 
   ctx.body = html;
 };

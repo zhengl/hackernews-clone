@@ -6,6 +6,7 @@ const baseConfig = require('./server.config');
 const poll = 'webpack/hot/poll?1000';
 
 module.exports = Object.assign({}, baseConfig, {
+  devtool: 'sourcemap',
   entry: [
     poll,
     baseConfig.entry,
@@ -15,10 +16,16 @@ module.exports = Object.assign({}, baseConfig, {
     whitelist: [poll],
   })],
   plugins: [
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support").install();',
+      raw: true,
+      entryOnly: false,
+    }),
     new StartServerPlugin(baseConfig.output.filename),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
+        BUILD_TARGET: JSON.stringify('server'),
         SCRIPT_BASE_PATH: JSON.stringify('http://localhost:3001/'),
       },
     }),

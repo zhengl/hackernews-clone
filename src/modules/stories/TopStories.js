@@ -4,17 +4,24 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { provideHooks } from 'redial';
 import Story from './Story';
-import { fetchTopStories } from './';
+import {
+  getTopStories,
+  fetchTopStories,
+} from './';
 
 const List = styled.ul`
   list-style: none;
 `;
 
-@connect(state => state)
+@connect(getTopStories)
 @provideHooks({
   fetch: ({ dispatch }) => dispatch(fetchTopStories()),
 })
 class TopStories extends Component {
+  static propTypes = {
+    stories: array.isRequired,
+  }
+
   render() {
     const { stories } = this.props;
 
@@ -25,9 +32,5 @@ class TopStories extends Component {
     );
   }
 }
-
-TopStories.propTypes = {
-  stories: array.isRequired,
-};
 
 export default TopStories;

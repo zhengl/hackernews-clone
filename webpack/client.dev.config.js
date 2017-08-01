@@ -10,6 +10,7 @@ module.exports = Object.assign({}, baseConfig, {
     baseConfig.entry,
   ],
   plugins: [
+    ...baseConfig.plugins,
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

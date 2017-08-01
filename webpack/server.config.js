@@ -23,6 +23,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        BUILD_TARGET: JSON.stringify('server'),
         SCRIPT_BASE_PATH: JSON.stringify(''),
       },
     }),
