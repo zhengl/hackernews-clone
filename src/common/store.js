@@ -1,18 +1,20 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
-import url from './router';
+import { routerReducer as router } from 'react-router-redux';
+import history from './router/history';
+import { routerMiddleware } from './router';
 import stories from '../modules/stories';
 
-const middlewares = [apiMiddleware, thunk];
+const middlewares = [apiMiddleware, thunk, routerMiddleware(history)];
 
 if (__DEV__) {
   middlewares.push(require('./logger/middleware'));
 }
 
 const reducer = combineReducers({
-  url,
   stories,
+  router,
 });
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 

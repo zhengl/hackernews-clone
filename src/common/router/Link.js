@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+import { string, func, node } from 'prop-types';
 import { connect } from 'react-redux';
-import { object, string, node } from 'prop-types';
+import { push } from 'react-router-redux';
 
 @connect()
 class Link extends Component {
-  static contextTypes = {
-    history: object.isRequired,
-  }
-
   static defaultProps = {
     to: '',
     children: null,
@@ -16,11 +13,13 @@ class Link extends Component {
   static propTypes = {
     to: string,
     children: node,
+    dispatch: func.isRequired,
   }
 
   onClick = (event) => {
     event.preventDefault();
-    this.context.history.push(this.props.to);
+    const { dispatch, to } = this.props;
+    dispatch(push(to));
   }
 
   render() {

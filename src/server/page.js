@@ -40,9 +40,7 @@ function renderHtml(styles, application, initialState) {
 }
 
 export default async (ctx) => {
-  const store = createStore({
-    url: ctx.url,
-  });
+  const store = createStore();
   await fetchData(ctx.url, store.dispatch);
   const { application, styles } = renderApplication(store);
   const html = renderHtml(styles, application, store.getState());

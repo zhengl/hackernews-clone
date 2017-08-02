@@ -8,6 +8,7 @@ export default [
   },
   {
     path: '/',
+    exact: true,
     component: TopStories,
   },
 ];
