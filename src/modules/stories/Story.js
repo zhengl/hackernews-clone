@@ -1,10 +1,12 @@
 import React from 'react';
 import { number, string } from 'prop-types';
+import { parse } from 'url';
 import { Link } from '../../common/router';
 
-const Story = ({ id, title }) => (
+const Story = ({ id, url, title, descendants }) => (
   <li>
-    <Link to={`/items/${id}`}>{title}</Link>
+    <a href={url}>{title}</a>
+    <Link to={`/items/${id}`}>{`${descendants} comments`}</Link>
   </li>
 );
 

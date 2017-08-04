@@ -1,12 +1,15 @@
 const webpack = require('webpack');
 const { resolve } = require('path');
 
+const { PORT } = process.env;
+const DEV_SERVER_PORT = PORT ? Number(PORT) + 1 : 3001;
+
 module.exports = {
   entry: './src/client/index',
   target: 'web',
   output: {
     path: resolve(__dirname, '../build/public'),
-    publicPath: 'http://localhost:3001/',
+    publicPath: `http://localhost:${DEV_SERVER_PORT}/`,
     filename: 'index.js',
   },
   module: {

@@ -1,11 +1,14 @@
 const webpack = require('webpack');
 const baseConfig = require('./client.config');
 
+const { PORT, LOG_LEVEL } = process.env;
+const DEV_SERVER_PORT = PORT ? Number(PORT) + 1 : 3001;
+
 module.exports = Object.assign({}, baseConfig, {
   devtool: 'inline-source-map',
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3001',
+    `webpack-dev-server/client?http://localhost:${DEV_SERVER_PORT}`,
     'webpack/hot/only-dev-server',
     baseConfig.entry,
   ],
@@ -13,7 +16,7 @@ module.exports = Object.assign({}, baseConfig, {
     new webpack.DefinePlugin({
       __DEV__: JSON.stringify(true),
       'process.env': {
-        LOG_LEVEL: JSON.stringify(process.env.LOG_LEVEL),
+        LOG_LEVEL: JSON.stringify(LOG_LEVEL),
         BUILD_TARGET: JSON.stringify('client'),
       },
     }),
@@ -23,7 +26,7 @@ module.exports = Object.assign({}, baseConfig, {
   ],
   devServer: {
     host: 'localhost',
-    port: 3001,
+    port: DEV_SERVER_PORT,
     historyApiFallback: true,
     hot: true,
     headers: {

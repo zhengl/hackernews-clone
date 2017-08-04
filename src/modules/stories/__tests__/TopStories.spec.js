@@ -7,11 +7,11 @@ describe('TopStories', () => {
   let topStories;
   const stories = [
     {
-      id: 'test-id-1',
+      id: 1,
       title: 'test-title-1',
     },
     {
-      id: 'test-id-2',
+      id: 2,
       title: 'test-title2',
     },
   ];

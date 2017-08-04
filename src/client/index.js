@@ -14,7 +14,8 @@ render(
 );
 
 if (module.hot) {
-  module.hot.accept('../common/AppContainer', () => {
+    console.log("hot!!!")
+  module.hot.accept(() => {
     render(
       <HotLoaderContainer>
         <AppContainer store={store} />

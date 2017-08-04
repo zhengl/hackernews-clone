@@ -9,8 +9,10 @@ import {
   fetchTopStories,
 } from './';
 
-const List = styled.ul`
-  list-style: none;
+const List = styled.ol`
+  width: 85%;
+  padding: 0;
+  margin: 0 auto;
 `;
 
 @connect(getTopStories)

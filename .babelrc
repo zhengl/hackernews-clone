@@ -1,13 +1,19 @@
 {
   "presets": [["env", {"modules": false, "exclude": ["transform-regenerator", "transform-async-to-generator"]}], "react"],
   "plugins": [
-  "styled-components",
+    ["styled-components", {
+      "ssr": true
+    }],
     "transform-decorators-legacy",
     "transform-class-properties"
   ],
   "env": {
     "test": {
         "presets": ["env", "react"],
+          "plugins": [
+            "transform-decorators-legacy",
+            "transform-class-properties"
+          ],
     }
   }
 }

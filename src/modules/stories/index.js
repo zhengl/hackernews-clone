@@ -56,7 +56,7 @@ export function getStoryDetails({ stories }) {
 export function fetchTopStories() {
   return {
     [CALL_API]: {
-      endpoint: 'http://localhost:3000/api/top-stories',
+      endpoint: '/api/top-stories',
       method: 'GET',
       types: [
         FETCH_TOP_STORIES_REQUEST,
@@ -70,7 +70,7 @@ export function fetchTopStories() {
 export function fetchStoryDetails(id) {
   return {
     [CALL_API]: {
-      endpoint: `http://localhost:3000/api/stories/${id}`,
+      endpoint: `/api/stories/${id}`,
       method: 'GET',
       types: [
         FETCH_STORY_DETAILS_REQUEST,
