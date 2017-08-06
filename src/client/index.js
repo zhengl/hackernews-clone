@@ -3,24 +3,23 @@ import { render } from 'react-dom';
 import { AppContainer as HotLoaderContainer } from 'react-hot-loader';
 import AppContainer from '../common/AppContainer';
 import createStore from '../common/store';
+import createHistory from '../common/router/createHistory';
 
-const store = createStore(__INITIAL_STATE__); // eslint-disable-line no-undef
+const { pathname } = __INITIAL_STATE__.router.location; // eslint-disable-line no-undef
+const history = createHistory(pathname);
+const store = createStore(__INITIAL_STATE__, history); // eslint-disable-line no-undef
 
-render(
-  <HotLoaderContainer>
-    <AppContainer store={store} />
-  </HotLoaderContainer>,
-  document.getElementById('root'),
-);
+function renderApplication() {
+  render(
+    <HotLoaderContainer>
+      <AppContainer store={store} history={history} />
+    </HotLoaderContainer>,
+    document.getElementById('root'),
+  );
+}
+
+renderApplication();
 
 if (module.hot) {
-    console.log("hot!!!")
-  module.hot.accept(() => {
-    render(
-      <HotLoaderContainer>
-        <AppContainer store={store} />
-      </HotLoaderContainer>,
-      document.getElementById('root'),
-    );
-  });
+  module.hot.accept(renderApplication);
 }

@@ -4,13 +4,14 @@ import { ServerStyleSheet } from 'styled-components';
 import AppContainer from '../common/AppContainer';
 import createStore from '../common/store';
 import fetchData from '../common/fetchData';
+import createHistory from '../common/router/createHistory';
 
 const basePath = process.env.SCRIPT_BASE_PATH;
 
-function renderApplication(store) {
+function renderApplication(store, history) {
   const sheet = new ServerStyleSheet();
   const application = renderToString(sheet.collectStyles(
-    <AppContainer store={store} />,
+    <AppContainer store={store} history={history} />,
   ));
   return {
     application,
@@ -40,9 +41,10 @@ function renderHtml(styles, application, initialState) {
 }
 
 export default async (ctx) => {
-  const store = createStore();
+  const history = createHistory(ctx.url);
+  const store = createStore({}, history);
   await fetchData(ctx.url, store.dispatch);
-  const { application, styles } = renderApplication(store);
+  const { application, styles } = renderApplication(store, history);
   const html = renderHtml(styles, application, store.getState());
 
   ctx.body = html;

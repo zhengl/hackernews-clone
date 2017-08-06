@@ -3,10 +3,9 @@ import { object } from 'prop-types';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { Switch, Route } from 'react-router';
-import history from '../router/history';
 import routes from '../routes';
 
-const AppContainer = ({ store }) => (
+const AppContainer = ({ store, history }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
@@ -18,6 +17,7 @@ const AppContainer = ({ store }) => (
 
 AppContainer.propTypes = {
   store: object.isRequired,
+  history: object.isRequired,
 };
 
 export default AppContainer;

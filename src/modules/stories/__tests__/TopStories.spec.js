@@ -9,10 +9,14 @@ describe('TopStories', () => {
     {
       id: 1,
       title: 'test-title-1',
+      url: 'test-url-1',
+      descendants: 100,
     },
     {
       id: 2,
       title: 'test-title2',
+      url: 'test-url-2',
+      descendants: 200,
     },
   ];
 
