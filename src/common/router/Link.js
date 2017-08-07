@@ -7,11 +7,13 @@ import { push } from 'react-router-redux';
 class Link extends Component {
   static defaultProps = {
     to: '',
+    className: '',
     children: null,
   }
 
   static propTypes = {
     to: string,
+    className: string,
     children: node,
     dispatch: func.isRequired,
   }
@@ -23,9 +25,9 @@ class Link extends Component {
   }
 
   render() {
-    const { to, children } = this.props;
+    const { to, className, children } = this.props;
     return (
-      <a href={to} onClick={this.onClick}>{children}</a>
+      <a href={to} className={className} onClick={this.onClick}>{children}</a>
     );
   }
 }

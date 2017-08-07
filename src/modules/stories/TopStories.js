@@ -11,8 +11,9 @@ import {
 
 const List = styled.ol`
   width: 85%;
-  padding: 0;
   margin: 0 auto;
+  padding: 8px;
+  background-color: rgb(246, 246, 239);
 `;
 
 @connect(getTopStories)
@@ -29,7 +30,7 @@ class TopStories extends Component {
 
     return (
       <List>
-        {stories.map(story => <Story key={story.id} {...story} />)}
+        {stories.map((story, index) => <Story key={story.id} index={index + 1} {...story} />)}
       </List>
     );
   }

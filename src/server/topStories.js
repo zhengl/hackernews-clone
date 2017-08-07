@@ -13,5 +13,5 @@ export default async (ctx) => {
     require('../common/logger')('TOP_STORIES').log(`Fetching data from ${URL}`);
   }
   const storyIds = await fetchTopStories();
-  ctx.body = await Promise.all(storyIds.slice(0, 5).map(fetchStory));
+  ctx.body = await Promise.all(storyIds.slice(0, 30).map(fetchStory));
 };
