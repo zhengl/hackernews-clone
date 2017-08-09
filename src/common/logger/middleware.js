@@ -1,6 +1,8 @@
-const logger = require('./')('ACTION');
+import loggerCreator from './';
 
-module.exports = () => next => (action) => {
+const logger = loggerCreator('ACTION');
+
+export default () => next => (action) => {
   logger.log(action.type);
   logger.debug(action);
   next(action);

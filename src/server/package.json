@@ -2,6 +2,7 @@
     "name": "server",
     "version": "0.0.0",
     "dependencies": {
-        "fetch": "^0.0.0"
+        "fetch": "^0.0.0",
+        "logger": "^0.0.0"
     }
 }

@@ -14,6 +14,13 @@
             "transform-decorators-legacy",
             "transform-class-properties"
           ],
+    },
+    "production": {
+        "presets": ["env", "react"],
+          "plugins": [
+            "transform-decorators-legacy",
+            "transform-class-properties"
+          ],
     }
   }
 }

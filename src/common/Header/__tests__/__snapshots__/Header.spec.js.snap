@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopStories renders correctly 1`] = `
+<nav
+  className="sc-bdVaJa iakAhZ"
+>
+  <a
+    className="sc-bwzfXH bgsIFO"
+    href=""
+    onClick={[Function]}
+  >
+    <img
+      alt="logo"
+      src="https://news.ycombinator.com/y18.gif"
+    />
+  </a>
+  <a
+    className="sc-htpNat fBYmwP"
+    href=""
+    onClick={[Function]}
+  >
+    Hacker News
+  </a>
+</nav>
+`;

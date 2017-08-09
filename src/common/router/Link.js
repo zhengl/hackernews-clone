@@ -9,13 +9,14 @@ class Link extends Component {
     to: '',
     className: '',
     children: null,
+    dispatch: () => {},
   }
 
   static propTypes = {
     to: string,
     className: string,
     children: node,
-    dispatch: func.isRequired,
+    dispatch: func,
   }
 
   onClick = (event) => {

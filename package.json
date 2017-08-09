@@ -3,7 +3,8 @@
   "scripts": {
     "bs": "lerna bootstrap",
     "start": "node ./build/server",
-    "build": "webpack --config webpack/server.config.js && webpack --config webpack/client.config.js",
+    "prebuild": "rm -rf build",
+    "build": "webpack --config webpack/server.config.js && webpack -p --config webpack/client.config.js",
     "predev": "rm -rf build",
     "dev": "npm-run-all --parallel dev:*",
     "dev:client": "webpack-dev-server --config webpack/client.dev.config.js",
@@ -63,5 +64,8 @@
     "webpack-dev-server": "^2.6.1",
     "webpack-node-externals": "^1.6.0",
     "webpack-shell-plugin": "^0.5.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": ["<rootDir>/node_modules/"]
   }
 }
