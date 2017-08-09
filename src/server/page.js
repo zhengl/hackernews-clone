@@ -1,10 +1,11 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
+import fetchData from 'fetch';
 import AppContainer from '../common/AppContainer';
 import createStore from '../common/store';
-import fetchData from '../common/fetchData';
 import createHistory from '../common/router/createHistory';
+import routes from '../common/routes';
 
 const basePath = process.env.SCRIPT_BASE_PATH;
 
@@ -43,7 +44,7 @@ function renderHtml(styles, application, initialState) {
 export default async (ctx) => {
   const history = createHistory(ctx.url);
   const store = createStore({}, history);
-  await fetchData(ctx.url, store.dispatch);
+  await fetchData(ctx.url, routes, store.dispatch);
   const { application, styles } = renderApplication(store, history);
   const html = renderHtml(styles, application, store.getState());
 

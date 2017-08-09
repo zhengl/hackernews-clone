@@ -1,7 +1,7 @@
 import { CALL_HISTORY_METHOD } from 'react-router-redux';
-import fetchData from '../fetchData';
+import fetchData from 'fetch';
 
-export default function routerMiddleware(history) {
+export default function routerMiddleware(history, routes) {
   return store => next => async (action) => {
     if (action.type !== CALL_HISTORY_METHOD) {
       return next(action);
@@ -10,7 +10,7 @@ export default function routerMiddleware(history) {
     const { payload: { method, args } } = action;
     const [url] = args;
     if (url) {
-      await fetchData(url, store.dispatch);
+      await fetchData(url, routes, store.dispatch);
     }
     history[method](...args);
     return next(action);

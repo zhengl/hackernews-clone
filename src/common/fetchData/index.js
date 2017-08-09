@@ -1,8 +1,8 @@
 import { trigger } from 'redial';
-import { matchPath } from '../common/router';
+import matchPath from './matchPath';
 
-export default async function fetchData(url, dispatch) {
-  const match = matchPath(url);
+export default async function fetchData(url, routes, dispatch) {
+  const match = matchPath(url, routes);
   if (!match) {
     return;
   }

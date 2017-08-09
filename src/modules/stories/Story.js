@@ -1,7 +1,7 @@
 import React from 'react';
 import { number, string } from 'prop-types';
 import styled from 'styled-components';
-import { Link } from '../../common/router';
+import { Link } from 'router';
 
 const Item = styled.li`
   position: relative;
@@ -16,20 +16,20 @@ const Item = styled.li`
 const Index = styled.span`
   position: absolute;
   left: 0;
-  font-size: 12px;
+  font-size: 14px;
   color: #828282;
   line-height: 17px;
   margin-right: 8px;
 `;
 
 const TitleLink = styled.a`
-  font-size: 12px;
+  font-size: 14px;
   color: #000;
   text-decoration: none;
 `;
 
 const Title = styled.h2`
-  font-size: 12px;
+  font-size: 14px;
   color: #000;
 `;
 
@@ -39,12 +39,12 @@ const Details = styled.p`
 
 const Points = styled.span`
   color: #828282;
-  font-size: 7px;
+  font-size: 12px;
 `;
 
 const Comments = styled(Link)`
   color: #828282;
-  font-size: 7px;
+  font-size: 12px;
   text-decoration: none;
   margin-left: 8px;
 
@@ -64,7 +64,7 @@ const Story = ({ index, id, url, title, score, descendants }) => (
     <Details>
       <Points>{`${score} points`}</Points>
       {
-        descendants &&
+        !!descendants &&
           <Comments to={`/items/${id}`}>{`${descendants} comments`}</Comments>
       }
     </Details>
@@ -73,7 +73,7 @@ const Story = ({ index, id, url, title, score, descendants }) => (
 
 Story.defaultProps = {
   url: '',
-  descendants: undefined,
+  descendants: 0,
 };
 
 Story.propTypes = {

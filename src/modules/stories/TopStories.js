@@ -3,6 +3,7 @@ import { array } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { provideHooks } from 'redial';
+import { media } from 'style-utils';
 import Story from './Story';
 import {
   getTopStories,
@@ -10,10 +11,16 @@ import {
 } from './';
 
 const List = styled.ol`
-  width: 85%;
+  list-style: none;
   margin: 0 auto;
   padding: 8px;
   background-color: rgb(246, 246, 239);
+
+  ${
+  media.desktop`
+      width: 85%;
+    `
+}
 `;
 
 @connect(getTopStories)

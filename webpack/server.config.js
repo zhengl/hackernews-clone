@@ -1,24 +1,19 @@
 const webpack = require('webpack');
 const { resolve } = require('path');
 const nodeExternals = require('webpack-node-externals');
+const baseConfig = require('./base.config');
 
-module.exports = {
-  entry: './src/server/index',
+module.exports = Object.assign({}, baseConfig, {
+  entry: [
+    'babel-polyfill',
+    './src/server/index',
+  ],
   target: 'node',
   externals: [nodeExternals()],
   output: {
     path: resolve(__dirname, '../build'),
     filename: 'server.js',
     libraryTarget: 'commonjs2',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -29,4 +24,4 @@ module.exports = {
       },
     }),
   ],
-};
+});

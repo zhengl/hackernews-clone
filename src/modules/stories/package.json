@@ -1,0 +1,8 @@
+{
+  "name": "stories",
+  "version": "0.0.0",
+  "dependencies": {
+    "router": "^0.0.0",
+    "style-utils": "^0.0.0"
+  }
+}

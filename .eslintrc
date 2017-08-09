@@ -9,7 +9,7 @@
         "__DEV__": true
     },
     "rules": {
-        "import/no-extraneous-dependencies": [error, { devDependencies: true }],
+        "import/no-extraneous-dependencies": 0,
         "react/forbid-prop-types": [error, { "forbid": ["any"] }],
         "react/jsx-filename-extension": 0,
         "global-require": 0

@@ -9,7 +9,7 @@ module.exports = Object.assign({}, baseConfig, {
   devtool: 'sourcemap',
   entry: [
     poll,
-    baseConfig.entry,
+    ...baseConfig.entry,
   ],
   watch: true,
   externals: [nodeExternals({

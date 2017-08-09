@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router';
 import Header from '../Header';
 import routes from '../routes';
 
-import './reset';
+import './normalize';
 
 const AppContainer = ({ store, history }) => (
   <Provider store={store}>

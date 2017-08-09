@@ -1,7 +1,6 @@
 import { matchPath as matchRoute } from 'react-router';
-import routes from '../routes';
 
-export default function matchPath(url) {
+export default function matchPath(url, routes) {
   let result;
   routes.some((route) => {
     const match = matchRoute(url, route);

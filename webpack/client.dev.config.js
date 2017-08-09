@@ -10,7 +10,7 @@ module.exports = Object.assign({}, baseConfig, {
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://localhost:${DEV_SERVER_PORT}`,
     'webpack/hot/only-dev-server',
-    baseConfig.entry,
+    ...baseConfig.entry,
   ],
   plugins: [
     new webpack.DefinePlugin({

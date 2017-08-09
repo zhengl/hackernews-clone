@@ -1,11 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from '../router';
+import { media } from '../style-utils';
 
 const Header = styled.nav`
-  width: 85%;
   margin: 0 auto;
   background-color: rgb(255, 102, 0);
+
+  ${
+  media.desktop`
+      width: 85%;
+    `
+}
 `;
 
 const Logo = styled(Link)`

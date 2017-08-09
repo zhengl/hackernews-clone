@@ -7,15 +7,19 @@ describe('TopStories', () => {
   let topStories;
   const stories = [
     {
+      index: 0,
       id: 1,
       title: 'test-title-1',
       url: 'test-url-1',
+      score: 10,
       descendants: 100,
     },
     {
+      index: 1,
       id: 2,
       title: 'test-title2',
       url: 'test-url-2',
+      score: 20,
       descendants: 200,
     },
   ];

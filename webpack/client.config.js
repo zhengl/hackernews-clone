@@ -1,25 +1,20 @@
 const webpack = require('webpack');
 const { resolve } = require('path');
+const baseConfig = require('./base.config');
 
 const { PORT } = process.env;
 const DEV_SERVER_PORT = PORT ? Number(PORT) + 1 : 3001;
 
-module.exports = {
-  entry: './src/client/index',
+module.exports = Object.assign({}, baseConfig, {
+  entry: [
+    'babel-polyfill',
+    './src/client/index',
+  ],
   target: 'web',
   output: {
     path: resolve(__dirname, '../build/public'),
     publicPath: `http://localhost:${DEV_SERVER_PORT}/`,
     filename: 'index.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -29,4 +24,4 @@ module.exports = {
       },
     }),
   ],
-};
+});
